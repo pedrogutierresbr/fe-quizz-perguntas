@@ -6,7 +6,7 @@ Este pequeno projeto foi feito para **exercitar** lógica com JavaScript e respo
 
 ## Layout
 
-![Layout](https://github.com/pedrogutierresbr/dashboard-google-charts/blob/main/public/assets/gif-desktop.gif?raw=true)
+![Layout](https://github.com/pedrogutierresbr/quizz-perguntas/blob/main/assets/gif-desktop.gif?raw=true)
 
 ## O que foi usado
 
