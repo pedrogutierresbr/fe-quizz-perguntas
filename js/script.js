@@ -28,6 +28,7 @@ function createQuestion(i) {
     questionNumber.textContent = i + 1;
     questionText.textContent = questions[i].question;
 
+    //criação de cada alternativa
     questions[i].answers.forEach((answer, index) => {
         const answerTemplate = document.querySelector(".answer-template").cloneNode(true);
 
@@ -45,11 +46,38 @@ function createQuestion(i) {
         answersBox.appendChild(answerTemplate);
 
         answerTemplate.addEventListener("click", () => {
-            console.log(index);
+            checkAnswer(answerTemplate);
         });
     });
 
     actualQuestions++;
+}
+
+function checkAnswer(btn) {
+    const buttons = answersBox.querySelectorAll("button");
+
+    buttons.forEach((button) => {
+        let isTrue = button.getAttribute("correct-answer");
+        if (isTrue == "true") {
+            button.classList.add("correct-answer");
+            if (btn == button) points++;
+        } else {
+            button.classList.add("wrong-answer");
+        }
+    });
+
+    nextQuestion();
+}
+
+function nextQuestion() {
+    setTimeout(() => {
+        if (actualQuestions >= questions.length) {
+            scoreContainer.classList.remove("hide");
+            quizzContainer.classList.add("hide");
+        }
+
+        createQuestion(actualQuestions);
+    }, 1000);
 }
 
 init();
