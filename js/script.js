@@ -15,13 +15,15 @@ function init() {
     createQuestion(0);
 }
 
-// criar uma pergunta (limpar questão anterior, alterar texto pergunta e inserir alternativas)
+// criar uma pergunta
 function createQuestion(i) {
+    //limpar questão anterior
     const oldButtons = answersBox.querySelectorAll("button");
     oldButtons.forEach(function (btn) {
         btn.remove();
     });
 
+    //alterar texto pergunta
     const questionText = question.querySelector("#question-text");
     const questionNumber = question.querySelector("#question-number");
 
@@ -72,12 +74,37 @@ function checkAnswer(btn) {
 function nextQuestion() {
     setTimeout(() => {
         if (actualQuestions >= questions.length) {
-            scoreContainer.classList.remove("hide");
-            quizzContainer.classList.add("hide");
+            showSuccessMessage();
+            return;
         }
 
         createQuestion(actualQuestions);
     }, 1000);
+}
+
+function showSuccessMessage() {
+    hideOrShowQuizzScore();
+
+    const score = ((points / questions.length) * 100).toFixed(2);
+    const displayScore = document.querySelector("#display-score span");
+    displayScore.textContent = score.toString();
+
+    const correctAnswers = document.querySelector("#correct-answers");
+    correctAnswers.textContent = points.toString();
+
+    const questionQty = document.querySelector("#questions-qty");
+    questionQty.textContent = questions.length.toString();
+
+    restartGame();
+}
+
+function hideOrShowQuizzScore() {
+    quizzContainer.classList.toggle("hide");
+    scoreContainer.classList.toggle("hide");
+}
+
+function restartGame() {
+    //zerar variaveis
 }
 
 init();
