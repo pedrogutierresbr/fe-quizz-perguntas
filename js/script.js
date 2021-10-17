@@ -104,7 +104,14 @@ function hideOrShowQuizzScore() {
 }
 
 function restartGame() {
-    //zerar variaveis
+    const restar = document.querySelector("#restart");
+
+    restar.addEventListener("click", () => {
+        actualQuestions = 0;
+        points = 0;
+        hideOrShowQuizzScore();
+        init();
+    });
 }
 
 init();
