@@ -1,4 +1,4 @@
-# Dashboard com google charts
+# Quizz de programção
 
 ## Sobre o estudo
 
